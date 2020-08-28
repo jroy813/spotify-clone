@@ -1,12 +1,18 @@
 .sidebar {
     flex: 0.2;
     height: 100vh;
+    overflow: overlay;
     min-width: 230px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 20px;
+    padding-bottom: 200px;
     background-color: #040404;
     color: white;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar__logo {

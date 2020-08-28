@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './css/App.css';
 import Login from './Components/Login';
 import Player from './Components/Player';
@@ -9,7 +9,7 @@ import { useDataLayerValue } from './DataLayer'
 const spotify = new SpotifyWebApi();
 
 function App() {
-    const [{ user, token }, dispatch] = useDataLayerValue();
+    const [{ token }, dispatch] = useDataLayerValue();
 
     useEffect(() => {
         const hash = getTokenFromUrl();
@@ -31,6 +31,20 @@ function App() {
                     type: 'SET_USER',
                    user 
                 });
+            });
+            
+            spotify.getUserPlaylists().then(playlists => {
+                dispatch({
+                    type: 'SET_PLAYLISTS',
+                    playlists: playlists
+                })
+            })
+            
+            spotify.getPlaylist('37i9dQZEVXcIekbA9Vrokc').then(playlist => {
+                dispatch({
+                    type: 'SET_DISCOVER_WEEKLY',
+                    discover_weekly: playlist
+                })
             })
         }
     }, []);

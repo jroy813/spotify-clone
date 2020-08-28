@@ -1,12 +1,16 @@
 .login {
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     height: 100vh;
     background: black;
 }
 
 .login img {
     width: 100%;
+    max-width: 400px;
+    margin-bottom: 40px;
 }
 
 .login a {
