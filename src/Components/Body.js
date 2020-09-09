@@ -31,7 +31,8 @@ function Body({ spotify }) {
                 </div>
                 {/* List of songs */}
                 {discover_weekly?.tracks.items.map(item => (
-                    <SongRow track={item.track} />
+                    console.log(item),
+                    <SongRow key={item.track.uri} track={item.track} spotify={spotify} />
                 ))}
             </div>
         </div>

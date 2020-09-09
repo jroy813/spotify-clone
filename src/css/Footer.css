@@ -3,10 +3,12 @@
     justify-content: space-between;
     position: fixed;
     bottom: 0;
-    height: 65px;
+    height: auto;
     width: 100%;
     padding: 20px;
-    background-color: #282828
+    background-color: #282828;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .footer__green {
@@ -66,4 +68,80 @@
 
 .footer__right * .MuiSlider-root {
     color: green;
+}
+
+body ._PlayerRSWP {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+._PlayerRSWP ._SliderRSWP {
+    margin-top: 10px;
+    width: 40%;
+    cursor: pointer;
+}
+
+._PlayerRSWP ._ContentRSWP {
+    width: 100%;
+}
+
+._PlayerRSWP .rswp__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    border-radius: 50%;
+    border: 2px solid #b3b3b3;
+    outline: none;
+}
+
+._PlayerRSWP .rswp__toggle:hover {
+    border-color: white;
+}
+
+._PlayerRSWP .rswp__toggle svg {
+    display: none;
+}
+
+._PlayerRSWP .rswp__toggle:hover:before {
+    color: white;
+}
+
+._PlayerRSWP .rswp__toggle:before {
+    display: block;
+    color: #b3b3b3;
+    font-family: glue1-spoticon;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+._PlayerRSWP button[aria-label="Play"]:before {
+    content: "";
+}
+
+._PlayerRSWP button[aria-label="Pause"]:before {
+    content: "";
+}
+
+._PlayerRSWP button[aria-label="Next Track"] svg,
+._PlayerRSWP button[aria-label="Previous Track"] svg {
+    width: 12px;
+    height: 12px;
+}
+
+body ._PlayerRSWP button,
+._PlayerRSWP .__378pd p {
+    color: #b3b3b3;
+    outline: none;
+    transition: ease all 0.4s;
+}
+
+body ._PlayerRSWP button:hover {
+    color: white;
 }

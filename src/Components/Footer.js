@@ -1,7 +1,6 @@
 import React from 'react'
 import '../css/Footer.css'
 import { Grid, Slider } from "@material-ui/core";
-
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
@@ -10,10 +9,14 @@ import RepeatIcon from "@material-ui/icons/Repeat";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import PlaylistPlayIcon from "@material-ui/icons/PlaylistPlay";
 
-function Footer() {
+import SpotifyPlayer from 'react-spotify-web-playback';
+import { useDataLayerValue } from '../DataLayer'
+
+const Footer = () => {
+    const [{ token }] = useDataLayerValue();
     return (
         <div className="footer">
-            <div className="footer__left">
+            {/* <div className="footer__left">
                 <img className="footer__albumLogo" src="https://upload.wikimedia.org/wikipedia/en/7/74/Usher_-_Confessions_album_cover.jpg" alt="" />
                 <div className="footer-songInfo">
                     <h4>Yeah!</h4>
@@ -39,7 +42,13 @@ function Footer() {
                  <Grid item xs>
                      <Slider />
                  </Grid>
-            </div>
+            </div> */}
+                
+            <SpotifyPlayer
+                token={token}
+                uris={['spotify:artist:6HQYnRM4OzToCYPpVBInuU']}
+                autoPlay={true}
+                />
         </div>
     )
 }
