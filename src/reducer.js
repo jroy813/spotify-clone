@@ -3,7 +3,12 @@ export const initialState = {
     playlits: [],
     playlist: false,
     item: null,
-    // token: 'BQAwUOE_olcb3tfry4XLZc9tj1Y5cxpSlJGwqKmqgMme2r7GCchyZRa8VjVqnQ7aE1bKsIZF0OGP_Zo02v9J06TKXW6stwRaFx7f1nZZGq8RQD3paCFboEFBs3j6cMxP_EQ2qMwXTal-RK4f33e4ctNrlVTov44J'
+    playerStatus: {
+        status: true,
+        playerState: false,
+        playUris: ['spotify:track:6N3oYlfZ2RPdjMYdHCRmFS'],
+        songNumber: 1
+    }
 }
 
 const reducer = ( state, action ) => {
@@ -32,6 +37,43 @@ const reducer = ( state, action ) => {
             return {
                 ...state,
                 discover_weekly: action.discover_weekly
+            }
+            
+        case 'PLAY_SONG' :
+            return {
+                ...state,
+                playerStatus: {
+                    ...state.playerStatus,
+                    status: true,
+                    songNumber: action.songNumber
+                }
+            }
+            
+        case 'ADD_SONG' :
+            return {
+                ...state,
+                playerStatus: {
+                    ...state.playerStatus,
+                    playUris: [...state.playerStatus.playUris, action.playUris]
+                }
+            }
+            
+        case 'SET_PLAYER_STATE' :
+            return {
+                ...state,
+                playerStatus: {
+                    ...state.playerStatus,
+                    playerState: action.playerState
+                }
+            }
+            
+        case 'UPDATE_PLAYER_STATUS' :
+            return {
+                ...state,
+                playerStatus: {
+                    ...state.playerStatus,
+                    status: action.status
+                }
             }
             
         default: 

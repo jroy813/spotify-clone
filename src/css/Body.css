@@ -45,6 +45,8 @@
     font-size: 80px !important;
     margin-left: 50px;margin-top: 20px;
     margin-bottom: 20px;
+    cursor: pointer;
+    color: #1db954;
 }
 
 .body__shuffle:hover {

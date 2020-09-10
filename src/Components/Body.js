@@ -3,12 +3,15 @@ import '../css/Body.css'
 import Header from './Header'
 import SongRow from './SongRow'
 import {useDataLayerValue} from '../DataLayer'
+import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled'
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 
 function Body({ spotify }) {
-    const [{discover_weekly}] = useDataLayerValue();
+    const [{discover_weekly, playerStatus}, dispatch] = useDataLayerValue();
+    
+    console.log(playerStatus);
     
     return (
         <div className="body">
@@ -25,14 +28,17 @@ function Body({ spotify }) {
             
             <div className="body__songs">
                 <div className="body__icons">
-                    <PlayCircleFilledIcon className="body__shuffle" />
-                    <FavoriteIcon fontSize="large" />
-                    <MoreHorizIcon />
+                    {
+                        playerStatus.playerState.isPlaying ?
+                        <PauseCircleFilledIcon className="body__shuffle" onClick={ () => dispatch({type: 'UPDATE_PLAYER_STATUS', status: false}) } />
+                        :
+                        <PlayCircleFilledIcon className="body__shuffle" onClick={ () => dispatch({type: 'UPDATE_PLAYER_STATUS', status: true}) } />
+                    }
+                    {/* <FavoriteIcon fontSize="large" />
+                    <MoreHorizIcon /> */}
                 </div>
-                {/* List of songs */}
-                {discover_weekly?.tracks.items.map(item => (
-                    console.log(item),
-                    <SongRow key={item.track.uri} track={item.track} spotify={spotify} />
+                {discover_weekly?.tracks.items.map((item, index) => (
+                    <SongRow key={index} index={index} track={item.track} spotify={spotify} />
                 ))}
             </div>
         </div>

@@ -70,6 +70,10 @@
     color: green;
 }
 
+.__nnvdcq span {
+    color: white;
+}
+
 body ._PlayerRSWP {
     display: flex;
     flex-direction: column-reverse;
