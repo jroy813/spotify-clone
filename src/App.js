@@ -37,17 +37,18 @@ function App() {
                 });
             });
             
-            spotify.getUserPlaylists().then(playlists => {
-                dispatch({
-                    type: 'SET_PLAYLISTS',
-                    playlists: playlists
-                })
-            })
-            
             spotify.getPlaylist('37i9dQZEVXcIekbA9Vrokc').then(playlist => {
                 dispatch({
                     type: 'SET_PLAYLIST',
                     playlist: playlist
+                })
+                spotify.getUserPlaylists().then(playlists => {
+                    playlists.items.unshift(playlist);
+                    console.log('TTEEEEST', playlists.items[0]);
+                    dispatch({
+                        type: 'SET_PLAYLISTS',
+                        playlists: playlists
+                    })
                 })
             })
         }
