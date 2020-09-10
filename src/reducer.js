@@ -1,13 +1,23 @@
 export const initialState = {
+    spotify: false,
     user: null,
-    playlits: [],
-    playlist: false,
+    // playlist: [],
+    playlist: {
+        images: false,
+        tracks: [
+            {
+                items: [
+                    
+                ]
+            }
+        ]
+    },
     item: null,
     playerStatus: {
         status: true,
         playerState: false,
         playUris: ['spotify:track:6N3oYlfZ2RPdjMYdHCRmFS'],
-        songNumber: 1
+        songNumber: 0
     }
 }
 
@@ -15,6 +25,12 @@ const reducer = ( state, action ) => {
     console.log('ACTION: ', action)
     
     switch(action.type) {
+    case 'SET_SPOTIFY' :
+        return {
+            ...state, 
+            spotify: action.spotify
+        };
+        
         case 'SET_USER' :
             return {
                 ...state, 
@@ -33,10 +49,16 @@ const reducer = ( state, action ) => {
                 playlists: action.playlists
             }
             
-        case 'SET_DISCOVER_WEEKLY' :
+        case 'SET_PLAYLIST' :
             return {
                 ...state,
-                discover_weekly: action.discover_weekly
+                playlist: action.playlist,
+                playerStatus: {
+                    ...state.playerStatus,
+                    playUris: action.playlist?.tracks?.items.map(track =>( track.track.uri )),
+                    status: true, // Doesn't work
+                    songNumber: 0
+                }
             }
             
         case 'PLAY_SONG' :

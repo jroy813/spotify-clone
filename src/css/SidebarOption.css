@@ -26,6 +26,11 @@
     margin-top: 10px;
     margin-left: 20px;
     font-size: 14px;
+    transition: ease all 0.5s;
+}
+
+.sidebarOption > p.active {
+    color: #1db954;
 }
 
 .sidebar__title {

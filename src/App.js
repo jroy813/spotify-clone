@@ -25,8 +25,12 @@ function App() {
             
             spotify.setAccessToken(_token)
             
+            dispatch({
+                type: 'SET_SPOTIFY',
+                spotify: spotify
+             });
+            
             spotify.getMe().then(user => {
-                console.log(user);
                 dispatch({
                     type: 'SET_USER',
                    user 
@@ -42,12 +46,12 @@ function App() {
             
             spotify.getPlaylist('37i9dQZEVXcIekbA9Vrokc').then(playlist => {
                 dispatch({
-                    type: 'SET_DISCOVER_WEEKLY',
-                    discover_weekly: playlist
+                    type: 'SET_PLAYLIST',
+                    playlist: playlist
                 })
             })
         }
-    }, [dispatch]);
+    }, []);
     
   return (
     <div className="app">
