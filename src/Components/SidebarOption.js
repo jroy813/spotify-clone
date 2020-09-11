@@ -7,6 +7,7 @@ function SidebarOption({ title, Icon, playlistScope }) {
 
     return (
     <div className="sidebarOption" onClick={ 
+        Icon ? '' : 
         () =>spotify.getPlaylist(playlistScope.id).then(playlist => {
             dispatch({
                 type: 'SET_PLAYLIST',
