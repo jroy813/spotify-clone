@@ -1,6 +1,14 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize"
 
-const redirectUri = "http://localhost:3000/"
+console.log('Environment: ' + process.env.NODE_ENV)
+
+let redirectUri = "http://tampa-websites.com/react/spotify-clone/"
+if (process.env.NODE_ENV !== 'production') {
+    redirectUri = "http://localhost:3000/"
+}else {
+    redirectUri = "http://tampa-websites.com/react/spotify-clone/"
+}
+
 const clientId = "d5bfd59a3c244351af6f8e046637273b"
 
 const scopes = [
@@ -12,6 +20,8 @@ const scopes = [
     'user-read-playback-state',
     'user-top-read',
     'user-modify-playback-state',
+    'user-library-read',
+    'user-library-modify'
 ]
 
 export const getTokenFromUrl = () => {

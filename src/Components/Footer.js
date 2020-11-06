@@ -13,6 +13,8 @@ const Footer = () => {
                 uris={playerStatus.playUris}
                 offset={playerStatus.songNumber}
                 autoPlay={true}
+                name="Spotify Web Player"
+                persistDeviceSelection={true}
                 play={playerStatus.status}
                 callback={(state) => dispatch({type: 'SET_PLAYER_STATE', playerState: state})}
                 />
